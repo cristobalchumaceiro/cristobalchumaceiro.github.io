@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristobal Chumaceiro Rangel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #efe8dc;
+            --text-color: #4a5568;
+            --heading-color: #2d3748;
+            --link-color: #3b6952;
+            --heading-font: "Inter", sans-serif;
+            --body-font: "Inter", sans-serif;
+        }
+        body {
+            margin: 0;
+            font-family: var(--body-font);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            font-weight: 400;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        h1, h2, h3, strong {
+            font-weight: bold; 
+            color: var(--heading-color);
+            font-family: var(--heading-font);
+        }
+        /* Header layout */
+        .header {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            margin: 0 0 10px 0;
+        }
+        .header-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header-links a {
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .header-links a:hover {
+            text-decoration: underline;
+            text-decoration-color: var(--link-color);
+        }
+        /* Main content layout */
+        .content {
+            width: 100%;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Grid Layout */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .resume-grid:last-child {
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 1rem;
+            margin: 0;
+        }
+        .section-content p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+        .section-content strong {
+            font-weight: 500;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-decoration-color: #cbd5e1;
+            text-underline-offset: 3px;
+        }
+        a:hover {
+            text-decoration-color: var(--link-color);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 35px;
+            }
+            .section-title {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Cristobal Chumaceiro Rangel</h1>
+            <div class="header-links">
+                <a href="mailto:cristobalc97@gmail.com">Email</a>
+                <a href="https://github.com/cristobalchumaceiro" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/cristobal-chumaceiro-rangel/" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- About Me -->
+            <div class="resume-grid">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-content">
+                    <p>I'm an MSc Computer Science student at Queen Mary University of London, where the core of my recent work has centred on applying artificial intelligence and machine learning to solve real-world ecological, climatological, and environmental problems.</p>
+                    <p>My undergraduate studies in business and a six-year career in management taught me leadership skills, project management, and effective communication. While I still rely on those skills every day, my transition into research was driven by a desire to tackle complex problems that don't have instruction manuals.</p>
+                    <p>I enjoy struggling with difficult concepts, exploring what has already been built, and using that foundation to develop my own solutions. For me, this continuous cycle of struggling and learning is what allows me to keep making positive impacts and meaningful contributions through my work.</p>
+                </div>
+            </div>
+            
+            <!-- Work -->
+            <div class="resume-grid">
+                <h2 class="section-title">Work</h2>
+                <div class="section-content">
+                    <p><strong>Reference-Free Hygroscopic Calibration of Low-Cost IoT Networks for Forecasting Indoor Particulate Matter Exposure</strong> <em>(MSc Dissertation)</em><br>
+                    I developed a calibration algorithm using Random Forests to correct humidity-induced biases in low-cost IoT sensors across a 14-month deployment. Building on this, I benchmarked LSTM networks against XGBoost to forecast indoor PM2.5 exposure across the QMUL campus, investigating temporal dependencies and how meteorological factors vary between different buildings.</p>
+
+                    <p><strong>Causal Discovery in Marine Ecosystems</strong><br>
+                    By applying causal machine learning to the Global Coral Bleaching Database, I generated Directed Acyclic Graphs (DAGs) and built a Bayesian network to map out and model the complex causal pathways behind coral bleaching events.</p>
+
+                    <p><strong>Predicting Surface Shortwave Radiation</strong> <a href="https://github.com/cristobalchumaceiro/solar_radiation_forecasting" target="_blank">GitHub</a><br>
+                    I evaluated Linear Regression and KNN algorithms to forecast shortwave radiation in Venezuela using an 11-year meteorological dataset, optimising the models through feature selection and cross-validation.</p>
+
+                    <p><strong>UI Design for Collaborative Research Platform</strong><br>
+                    Working as part of a team, I conducted user research and iterative development across the end-to-end HCI lifecycle for a startup's collaborative research software, producing a user interface prototype and a detailed stakeholder report.</p>
+                </div>
+            </div>
+            
+            <!-- Other -->
+            <div class="resume-grid">
+                <h2 class="section-title">Other</h2>
+                <div class="section-content">
+                    <p>I am a native Spanish speaker and conversational in Japanese. When I'm not at my desk, I love photography, long-distance running, and finding any excuse to be outdoors.</p>
+                    
+                    <p><strong>Currently exploring:</strong><br>
+                    <a href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/" target="_blank">CS4780 Machine Learning for Intelligent Systems</a> (Cornell University)<br>
+                    <a href="https://www.deeplearning.ai/courses/agentic-ai" target="_blank">Agentic AI</a> (DeepLearning.AI)</p>
+                    
+                    <p><strong>Currently reading:</strong><br>
+                    <!-- CURRENTLY_READING_START --><em><a href="https://www.goodreads.com/book/show/18185" target="_blank">The Pillow Book</a></em> by Sei Shōnagon.<!-- CURRENTLY_READING_END --></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
