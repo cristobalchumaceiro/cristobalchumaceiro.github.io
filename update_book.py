@@ -19,36 +19,42 @@ try:
 
     root = ET.fromstring(xml_data)
     
-    first_item = root.find('./channel/item')
-    if first_item is not None:
-        title = first_item.find('title').text
-        author = first_item.find('author_name').text
-        
-        # Extract the public book ID to link to the book page rather than your personal review
-        book_id = first_item.find('book_id').text
-        book_link = f"https://www.goodreads.com/book/show/{book_id}"
-        
-        # Clean up CDATA if present and strip whitespace
-        title = title.replace('<![CDATA[', '').replace(']]>', '').strip()
-        author = author.replace('<![CDATA[', '').replace(']]>', '').strip()
-        
-        new_text = f"<em><a href=\"{book_link}\" target=\"_blank\">{title}</a></em> by {author}."
-        
-        # Read the current index.html
-        with open('index.html', 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        # Replace content between our specific HTML comments
-        pattern = r'(<!-- CURRENTLY_READING_START -->)(.*?)(<!-- CURRENTLY_READING_END -->)'
-        updated_content = re.sub(pattern, rf'\g<1>{new_text}\g<3>', content, flags=re.DOTALL)
-        
-        # Write the updated content back
-        with open('index.html', 'w', encoding='utf-8') as f:
-            f.write(updated_content)
+    items = root.findall('./channel/item')
+    
+    if len(items) > 0:
+        book_lines = []
+        for item in items:
+            title = item.find('title').text
+            author = item.find('author_name').text
             
-        print(f"Success! Updated to: {new_text}")
+            # Extract the public book ID to link to the book page rather than your personal review
+            book_id = item.find('book_id').text
+            book_link = f"https://www.goodreads.com/book/show/{book_id}"
+            
+            # Clean up CDATA if present and strip whitespace
+            title = title.replace('<![CDATA[', '').replace(']]>', '').strip()
+            author = author.replace('<![CDATA[', '').replace(']]>', '').strip()
+            
+            book_lines.append(f"<em><a href=\"{book_link}\" target=\"_blank\">{title}</a></em> by {author}.")
+            
+        new_text = "<br>\n                    ".join(book_lines)
     else:
-        print("No books found in the currently reading shelf.")
+        new_text = "Nothing right now!"
+        print("No books found in the currently reading shelf. Updating to 'Nothing right now!'")
+        
+    # Read the current index.html
+    with open('index.html', 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # Replace content between our specific HTML comments
+    pattern = r'(<!-- CURRENTLY_READING_START -->)(.*?)(<!-- CURRENTLY_READING_END -->)'
+    updated_content = re.sub(pattern, rf'\g<1>{new_text}\g<3>', content, flags=re.DOTALL)
+    
+    # Write the updated content back
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(updated_content)
+        
+    print(f"Success! Updated to:\n{new_text}")
 except Exception as e:
     print(f"An error occurred: {e}")
     sys.exit(1)
